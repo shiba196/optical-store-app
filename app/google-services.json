@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "603536640475",
+    "project_id": "ptical-store",
+    "storage_bucket": "ptical-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603536640475:android:b6f8ecfbaef38648defffe",
+        "android_client_info": {
+          "package_name": "com.example.optical_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603536640475-561l94rnajormdt6s60l3i4im4da4mhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhTxdKJiG-Ymm6Yz-9A3bZGKO9Pr3OZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603536640475-561l94rnajormdt6s60l3i4im4da4mhs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603536640475:android:4a25571483cc4a89defffe",
+        "android_client_info": {
+          "package_name": "com.example.opticalstoreapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603536640475-561l94rnajormdt6s60l3i4im4da4mhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhTxdKJiG-Ymm6Yz-9A3bZGKO9Pr3OZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603536640475-561l94rnajormdt6s60l3i4im4da4mhs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
