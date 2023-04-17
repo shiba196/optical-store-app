@@ -21,6 +21,11 @@ import com.example.optical_store.adapters.CategoryAdapter;
 import com.example.optical_store.adapters.NewProductsAdapter;
 import com.example.optical_store.models.CategoryModel;
 import com.example.optical_store.models.NewProductsModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
