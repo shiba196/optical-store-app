@@ -10,10 +10,9 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="122dp"
+        android:layout_width="155dp"
         android:layout_height="68dp"
-        tools:ignore="MissingConstraints"
-        android:fontFamily="@font/dancing_script"
+        android:fontFamily="@font/aclonica"
         android:text="@string/log_in"
         android:textColor="@color/textHeading"
         android:textSize="40sp"
@@ -23,7 +22,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.214"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:layout_marginTop="30dp"
@@ -35,7 +35,7 @@
         android:drawablePadding="10dp"
         android:elevation="3dp"
         android:hint="@string/email"
-        android:textColorHint="@color/blue"
+        android:textColorHint="@color/black"
         android:padding="15dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +51,8 @@
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="10dp"
         android:elevation="3dp"
-        android:hint="@string/PASSWORD"
-        android:textColorHint="@color/blue"
+        android:hint="Password"
+        android:textColorHint="@color/black"
         android:inputType="numberPassword"
         android:padding="15dp"
         android:textColor="@color/black"
@@ -96,15 +96,17 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:onClick="signUp"
-        android:textColor="@color/blue"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:backgroundTint="@color/pink"
+        android:onClick="signUp"
+        android:text="Sign Up"
+        android:textColor="@color/blue"
+        android:textSize="28dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

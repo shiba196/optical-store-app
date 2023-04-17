@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.optical_store.R;
 import com.example.optical_store.activities.DetailedActivity;
 import com.example.optical_store.models.NewProductsModel;
+import com.example.optical_store.models.PopularProductsModel;
 
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     private Context context;
     private List<NewProductsModel> list;
 
-    public NewProductsAdapter(Context context, List<NewProductsModel> list) {
+    public NewProductsAdapter(Context context, List<PopularProductsModel> list) {
         this.context = context;
         this.list = list;
     }
