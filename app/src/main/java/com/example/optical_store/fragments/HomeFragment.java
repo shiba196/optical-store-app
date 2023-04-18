@@ -23,7 +23,10 @@ import com.example.optical_store.adapters.NewProductsAdapter;
 import com.example.optical_store.adapters.PopularProductsAdapter;
 import com.example.optical_store.models.CategoryModel;
 import com.example.optical_store.models.NewProductsModel;
+
 import com.example.optical_store.models.PopularProductsModel;
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
