@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class HomeFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
-        popularRecyclerview = root.findViewById(R.id.popular_product_rec);
+        popularRecyclerview = root.findViewById(R.id.popular_rec);
 
         db = FirebaseFirestore.getInstance();
 
@@ -130,7 +131,7 @@ public class HomeFragment extends Fragment {
         //New Products
         newProductRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL, false));
         newProductsModelList = new ArrayList<>();
-        newProductsAdapter = new NewProductsAdapter(getContext(), newProductsModelList);
+        newProductsAdapter = new NewProductsAdapter(getContext(),newProductsModelList);
         newProductRecyclerview.setAdapter(newProductsAdapter);
 
         db.collection("NewProducts")

@@ -25,9 +25,9 @@
         <activity
             android:name=".activities.CartActivity"
             android:exported="false" />
-        <activity
-            android:name=".CartActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".CartActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activities.OnBoardingActivity"
             android:exported="false" />
