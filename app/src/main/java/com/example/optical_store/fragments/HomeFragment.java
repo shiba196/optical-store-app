@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment {
         //Popular products
         popularRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL, false));
         popularProductsModelList= new ArrayList<>();
-        popularProductsAdapter = new popularProductsAdapters (getContext(),popularProductsModelList);
+        popularProductsAdapter = new popularProductsAdapter (getContext(),popularProductsModelList);
         popularRecyclerview.setAdapter(popularProductsAdapter);
 
         return root;
