@@ -24,7 +24,7 @@ import java.util.List;
 public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.viewHolder> {
 
     private Context context;
-    private List<NewProductsModel> list;
+    private List<PopularProductsModel> list;
 
     public NewProductsAdapter(Context context, List<PopularProductsModel> list) {
         this.context = context;
@@ -48,7 +48,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailedActivity.class);
-                intent.putExtra("detailed",list.get(position));
+                intent.putExtra("detailed", (CharSequence) list.get(position));
                 context.startActivity(intent);
             }
         });
