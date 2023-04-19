@@ -3,10 +3,16 @@ package com.example.optical_store.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.optical_store.R;
 import com.example.optical_store.adapters.MyCartAdapter;
@@ -23,6 +29,9 @@ import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
+    int overAllTotalAmount;
+
+    TextView overAllAmount;
     Toolbar toolbar;
     RecyclerView recyclerView;
     List<MyCartModel> cartModelList;
@@ -41,6 +50,11 @@ public class CartActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Get Data From My Cart Adapter
+        LocalBroadcastManager.getInstance(this)
+                .registerReceiver(mMessageReceiver,new IntentFilter("MyTotalAmount"));
+
+        overAllAmount = findViewById(R.id.overall);
         recyclerView = findViewById(R.id.cart_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartModelList = new ArrayList<>();
@@ -64,5 +78,15 @@ public class CartActivity extends AppCompatActivity {
     }
     });
 
+
     }
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            int totalBill = intent.getIntExtra("totalAmount", 0);
+            overAllAmount.setText("Total Amount :"+totalBill+"$");
+        }
+    };
 }
