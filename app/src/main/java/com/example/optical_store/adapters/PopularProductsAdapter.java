@@ -41,7 +41,6 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_product,parent,false));
     }
 
-    @Override
     public void onBindViewHolder(@NonNull NewProductsAdapter.viewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Glide.with(context).load(popularProductsModelList.get(position).getImg_url()).into(holder.newImg);
@@ -52,7 +51,7 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailedActivity.class);
-                intent.putExtra("detailed",List.get(position));
+                intent.putExtra("detailed", (CharSequence) popularProductsModelList.get(position));
                 context.startActivity(intent);
             }
         });
