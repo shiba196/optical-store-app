@@ -2,7 +2,7 @@ package com.example.optical_store.models;
 
 import java.io.Serializable;
 
-public class NewProductsModel {
+public class NewProductsModel implements Serializable{
 
     String description;
     String name;

@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.example.optical_store.R;
 import com.example.optical_store.activities.DetailedActivity;
 import com.example.optical_store.models.NewProductsModel;
-import com.example.optical_store.models.PopularProductsModel;
 
 
 import java.util.List;
@@ -57,6 +56,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
 
     @Override
     public int getItemCount() {
+
         return list.size();
     }
 
