@@ -1,6 +1,6 @@
 package com.example.optical_store.adapters;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     private Context context;
     private List<NewProductsModel> list;
 
-    public NewProductsAdapter(Context context, List<PopularProductsModel> list) {
+    public NewProductsAdapter(Context context, List<NewProductsModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -38,7 +38,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.newImg);
         holder.newName.setText(list.get(position).getName());

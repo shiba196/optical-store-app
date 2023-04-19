@@ -1,6 +1,5 @@
 package com.example.optical_store.fragments;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
