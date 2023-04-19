@@ -1,5 +1,6 @@
 package com.example.optical_store.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
@@ -19,8 +20,18 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.optical_store.R;
 import com.example.optical_store.adapters.CategoryAdapter;
 import com.example.optical_store.adapters.NewProductsAdapter;
+import com.example.optical_store.adapters.PopularProductsAdapter;
 import com.example.optical_store.models.CategoryModel;
 import com.example.optical_store.models.NewProductsModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import com.example.optical_store.models.PopularProductsModel;
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +47,7 @@ public class HomeFragment extends Fragment {
 
     ProgressDialog progressDialog;
 
-    RecyclerView catRecyclerview,newProductRecyclerview;
+    RecyclerView catRecyclerview,newProductRecyclerview, popularRecyclerview;
 
     //Category recyclerview
     CategoryAdapter categoryAdapter;
@@ -45,6 +56,10 @@ public class HomeFragment extends Fragment {
     //New Product Recyclerview
     NewProductsAdapter newProductsAdapter;
     List<NewProductsModel> newProductsModelList;
+
+    //Popular Product Recyclerview
+    PopularProductsAdapter popularProductsAdapter;
+    List<PopularProductsModel> popularProductsModelList;
 
 
 
@@ -65,6 +80,7 @@ public class HomeFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
+        popularRecyclerview = root.findViewById(R.id.popular_product_rec);
 
         db = FirebaseFirestore.getInstance();
 
@@ -72,8 +88,8 @@ public class HomeFragment extends Fragment {
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
         List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.banner1,"Discount", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner2,"Discount", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner01_new,"Discount", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.baneer02_new,"Discount", ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.banner3,"Discount", ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels);
@@ -136,6 +152,12 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
+
+        //Popular products
+        popularRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL, false));
+        popularProductsModelList= new ArrayList<>();
+        popularProductsAdapter = new popularProductsAdapter (getContext(),popularProductsModelList);
+        popularRecyclerview.setAdapter(popularProductsAdapter);
 
         return root;
     }
