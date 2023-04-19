@@ -18,6 +18,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
     Context context;
     List<MyCartModel> list;
+
+
     public MyCartAdapter(Context context, List<MyCartModel> list){
 
         this.context = context;
