@@ -63,11 +63,12 @@
                     android:stepSize="0.1" />
 
                 <TextView
+                    android:id="@+id/rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_toStartOf="@id/my_rating"
-                    android:fontFamily="@font/dancing_script"
+                    android:fontFamily="@font/actor"
                     android:text="4.0"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -87,15 +88,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/dancing_script"
-                android:text="Lorem Ipsum" />
+                android:fontFamily="@font/actor"
+                android:text="Introducing our new line of eyeglasses that are designed to not only enhance your vision but also elevate your style. These eyeglasses are crafted with precision and quality materials to provide you with a comfortable and long-lasting experience." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/dancing_script"
+                android:fontFamily="@font/actor"
                 android:text="Price"
                 android:textColor="@color/black"
                 android:textSize="21sp"
@@ -110,8 +111,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/dancing_script"
-                    android:text="$"
+                    android:fontFamily="@font/actor"
+                    android:text="Rs."
                     android:textColor="@color/purple_700"
                     android:textStyle="bold" />
 
@@ -119,8 +120,8 @@
                     android:id="@+id/detailed_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/dancing_script"
-                    android:text="20"
+                    android:fontFamily="@font/actor"
+                    android:text="200"
                     android:textColor="@color/purple_700"
                     android:textStyle="bold" />
             </LinearLayout>

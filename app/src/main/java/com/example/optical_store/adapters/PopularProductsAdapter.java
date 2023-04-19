@@ -15,22 +15,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.optical_store.R;
 import com.example.optical_store.activities.DetailedActivity;
-import com.example.optical_store.models.NewProductsModel;
 import com.example.optical_store.models.PopularProductsModel;
 
+import java.text.BreakIterator;
 import java.util.List;
 
 public abstract class PopularProductsAdapter extends RecyclerView.Adapter<PopularProductsAdapter.ViewHolder> {
+
+
+    private viewHolder holder;
+    private int position;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }
+
     private Context context;
     private List<PopularProductsModel> popularProductsModelList;
 
-    public PopularProductsAdapter(Context context, List<NewProductsModel> list) {
+    public PopularProductsAdapter(Context context, List<PopularProductsModel> list) {
         this.context = context;
         this.popularProductsModelList = popularProductsModelList;
     }
@@ -38,21 +43,20 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_product,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_product, parent, false));
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull NewProductsAdapter.viewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull viewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        Glide.with(context).load(popularProductsModelList.get(position).getImg_url()).into(holder.newImg);
-        holder.newName.setText(popularProductsModelList.get(position).getName());
-        holder.newPrice.setText(String.valueOf(popularProductsModelList.get(position).getPrice()));
+        Glide.with(context).load(popularProductsModelList.get(position).getImg_url()).into(holder.imageView);
+        holder.Name.setText(popularProductsModelList.get(position).getName());
+        holder.Price.setText(String.valueOf(popularProductsModelList.get(position).getPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailedActivity.class);
-                intent.putExtra("detailed",List.get(position));
+                intent.putExtra("detailed",popularProductsModelList.get(position));
                 context.startActivity(intent);
             }
         });
@@ -66,8 +70,9 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
 
     public class viewHolder extends RecyclerView.ViewHolder {
 
+        public BreakIterator name;
         ImageView imageView;
-        TextView Name,Price;
+        TextView Name, Price;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
