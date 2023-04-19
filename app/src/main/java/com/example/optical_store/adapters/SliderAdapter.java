@@ -24,7 +24,7 @@ public class SliderAdapter extends PagerAdapter {
         this.context = context;
     }
 
-    int imagesArray[] ={
+    int[] imagesArray ={
 
             R.drawable.onboardscreen1,
             R.drawable.onboardscreen2,
@@ -32,13 +32,13 @@ public class SliderAdapter extends PagerAdapter {
 
     };
 
-    int headingArray[] ={
+    int[] headingArray ={
 
             R.string.first_slide,
             R.string.second_slide,
             R.string.third_slide,
     };
-    int descriptionArray[] ={
+    int[] descriptionArray ={
 
             R.string.description,
             R.string.description,
@@ -62,7 +62,7 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        layoutInflater = (LayoutInflater)  context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater = (LayoutInflater)  context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.sliding_layout,container, false);
 
         ImageView imageView = view.findViewById(R.id.slider_img);
