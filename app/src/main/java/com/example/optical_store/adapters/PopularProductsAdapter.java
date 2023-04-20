@@ -1,6 +1,8 @@
 package com.example.optical_store.adapters;
 
 
+//import android.annotation.SuppressLint;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,12 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.optical_store.R;
 import com.example.optical_store.activities.DetailedActivity;
-import com.example.optical_store.models.NewProductsModel;
 import com.example.optical_store.models.PopularProductsModel;
 
 import java.util.List;
 
-public abstract class PopularProductsAdapter extends RecyclerView.Adapter<PopularProductsAdapter.ViewHolder> {
+public abstract
+class PopularProductsAdapter extends RecyclerView.Adapter<PopularProductsAdapter.ViewHolder> implements NewProductsAdaptor {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
@@ -30,7 +32,7 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
     private Context context;
     private List<PopularProductsModel> popularProductsModelList;
 
-    public PopularProductsAdapter(Context context, List<NewProductsModel> list) {
+    public PopularProductsAdapter(Context context, List<PopularProductsModel> list) {
         this.context = context;
         this.popularProductsModelList = popularProductsModelList;
     }
@@ -41,6 +43,8 @@ public abstract class PopularProductsAdapter extends RecyclerView.Adapter<Popula
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_product,parent,false));
     }
 
+
+    @Override
     public void onBindViewHolder(@NonNull NewProductsAdapter.viewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Glide.with(context).load(popularProductsModelList.get(position).getImg_url()).into(holder.newImg);

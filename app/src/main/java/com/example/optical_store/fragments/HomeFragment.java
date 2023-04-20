@@ -1,22 +1,28 @@
 package com.example.optical_store.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.optical_store.R;
+import com.example.optical_store.activities.ShowAllActivity;
 import com.example.optical_store.adapters.CategoryAdapter;
 import com.example.optical_store.adapters.NewProductsAdapter;
 import com.example.optical_store.adapters.PopularProductsAdapter;
@@ -44,6 +50,9 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+
+    TextView catShowAll,popularShowAll,newProductShowAll;
+    LinearLayout linearLayout;
     ProgressDialog progressDialog;
 
     RecyclerView catRecyclerview,newProductRecyclerview, popularRecyclerview;
@@ -77,13 +86,45 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        db = FirebaseFirestore.getInstance();
+
         progressDialog = new ProgressDialog(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
 
-        db = FirebaseFirestore.getInstance();
+        catShowAll = root.findViewById(R.id.category_see_all);
+        popularShowAll = root.findViewById(R.id.popular_rec);
+//         popularShowAll = root.findViewById(R.id.popular_see_all);
+        newProductShowAll = root.findViewById(R.id.newProducts_see_all);
 
+        catShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        newProductShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        popularShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        linearLayout = root.findViewById(R.id.home_layout);
+        linearLayout.setVisibility(View.GONE);
         //image slider
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
         List<SlideModel> slideModels = new ArrayList<>();
@@ -119,6 +160,7 @@ public class HomeFragment extends Fragment {
                                 CategoryModel categoryModel = document.toObject(CategoryModel.class);
                                 categoryModelList.add(categoryModel);
                                 categoryAdapter.notifyDataSetChanged();
+                                linearLayout.setVisibility(View.VISIBLE);
                                 progressDialog.dismiss();
                             }
                         } else {
@@ -154,10 +196,35 @@ public class HomeFragment extends Fragment {
                 });
 
         //Popular products
-        popularRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL, false));
+        popularRecyclerview.setLayoutManager(new GridLayoutManager(getActivity(),2));
         popularProductsModelList= new ArrayList<>();
-        popularProductsAdapter = new popularProductsAdapter (getContext(),popularProductsModelList);
+        popularProductsAdapter = new PopularProductsAdapter(getContext(), popularProductsModelList) {
+            @Override
+            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+            }
+        };
         popularRecyclerview.setAdapter(popularProductsAdapter);
+
+
+        db.collection("All Products")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                PopularProductsModel popularProductsModel = document.toObject(PopularProductsModel.class);
+                                popularProductsModelList.add(popularProductsModel);
+                                popularProductsAdapter.notifyDataSetChanged();
+                            }
+                        } else {
+
+                            Toast.makeText(getActivity(),""+task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
         return root;
     }
