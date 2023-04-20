@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Optical_store"
         tools:targetApi="31">
         <activity
+            android:name=".ShowAllActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddAddressActivity"
             android:exported="false" />
         <activity
@@ -24,10 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.CartActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".CartActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".CartActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".activities.OnBoardingActivity"
             android:exported="false" />
