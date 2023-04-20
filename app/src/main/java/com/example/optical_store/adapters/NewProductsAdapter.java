@@ -1,6 +1,6 @@
 package com.example.optical_store.adapters;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.optical_store.R;
 import com.example.optical_store.activities.DetailedActivity;
 import com.example.optical_store.models.NewProductsModel;
+import com.example.optical_store.models.PopularProductsModel;
 
 
 import java.util.List;
@@ -30,6 +31,8 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         this.list = list;
     }
 
+
+
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,7 +40,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.newImg);
         holder.newName.setText(list.get(position).getName());
@@ -47,7 +50,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailedActivity.class);
-                intent.putExtra("detailed",list.get(position));
+                intent.putExtra("detailed", (CharSequence) list.get(position));
                 context.startActivity(intent);
             }
         });
@@ -56,6 +59,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
 
     @Override
     public int getItemCount() {
+
         return list.size();
     }
 

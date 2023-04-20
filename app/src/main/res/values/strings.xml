@@ -15,4 +15,9 @@
     <string name="log_in">Log In</string>
     <string name="email">Email</string>
     <string name="PASSWORD">PASSWORD</string>
+    <string name="category">Category</string>
+    <string name="new_products">New Products</string>
+    <string name="see_all">See All</string>
+    <string name="we_provide_best_products">We provide best products.</string>
+    <string name="price_rs">Price: Rs</string>
 </resources>
